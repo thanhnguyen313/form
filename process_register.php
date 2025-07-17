@@ -1,46 +1,54 @@
 <?php
-    $name = strtolower(htmlspecialchars($_POST['name'] ?? ''));
-    $password = strtolower(htmlspecialchars($_POST['new_password'] ?? ''));
-    echo "$name <br>";
-    echo "$password <br>";
+    header('Content-Type: application/json');
 
-    $file = __DIR__ . "/user.json";
-
-    function check_username($name) {
-        $users = json_decode(file_get_contents('user.json'), true);
-        foreach($users as $user) {
-            if($name === $user['name']) {
-                echo "exists";
-                return;
-            }
-        }
-        echo "ok";
-    }
-    if($_GET['action'] ?? '' === 'check') {
-        $name = strtolower(htmlspecialchars($_GET['username'] ?? ''));
-        check_username($name);
+    $name = htmlspecialchars($_POST['name'] ?? '');
+    $password = htmlspecialchars($_POST['password'] ?? '');
+    // Check username
+    if(!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
+        echo json_encode([
+            'message' => -2,
+            'error' => 'Invalid username. Only letters, numbers, and underscores are allowed.'
+        ]);
         exit;
     }
-
-    if (file_exists($file) && filesize($file) > 0) {
-        $json = file_get_contents($file);
-        $users = json_decode($json, true);
-        if (!is_array($users)) {
-            $users = [];
-        }
-    } else {
-        $users = []; 
+    // Check password strength
+    $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+    if(!preg_match($passwordPattern, $password)) {
+        echo json_encode([
+            'message' => -3,
+            'error' => 'Weak password. It must be at least 8 characters long and include uppercase, lowercase, numbers, and special characters.'                    
+        ]);
+        exit;
+    }
+    // Check if username already exists
+    $file = __DIR__ . "/user.json";
+    if(!file_exists($file)) {
+        file_put_contents($file, json_encode([]));
     }
 
-    $user = [
+    $userList = json_decode(file_get_contents($file), true);
+    
+    // Check for duplicate username
+    foreach ($userList as $user) {
+        if($user['name'] === $name) {
+            echo json_encode([
+                'message' => 0,
+                'error' => 'Username already exists.'
+            ]);
+            exit;
+        }
+    }
+    // Add new user to JSON
+    $newUser = [
         'name' => $name,
         'password' => $password
     ];
+    $userList[] = $newUser;
+    file_put_contents($file, json_encode($userList, JSON_PRETTY_PRINT));
 
-    $users[] = $user;
-
-    $jsonData = json_encode($users, JSON_PRETTY_PRINT);
-
-    $result = file_put_contents($file, $jsonData);
+    echo json_encode([
+        'message' => 1,
+        'success' => 'success.php'
+    ]);
 
 ?>

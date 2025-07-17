@@ -10,9 +10,5 @@
     {
         "name": "guest",
         "password": "guestpass"
-    },
-    {
-        "name": "24521207",
-        "password": "123123"
     }
 ]
