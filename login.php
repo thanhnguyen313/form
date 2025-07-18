@@ -23,10 +23,11 @@
         Your browser does not support the video tag.
     </video>
     <form action="process_login.php" method="post" id="form_login" class="glass">
-        <p>username</p>
+        <h2>Login your account</h2>
+        <p>Username</p>
         <input type="text" name="name" id="username" >
         <p id="username_error"></p>
-        <p>password</p>
+        <p>Password</p>
         <input type="password" name="password" id="password">
         <button type="button" id="toggle_password"><i class="fa-solid fa-eye"></i></button>
         <p id="password_error"></p>

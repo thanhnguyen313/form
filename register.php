@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+    <link rel="stylesheet" href="register_style.css"> 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -16,19 +17,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <form action="process_register.php" method="post" id = "form_register">
-        <p>new username</p>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="register.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <form action="process_register.php" method="post" id = "form_register" class="glass">
+        <h2>Create a new account</h2>
+        <p>New Username</p>
         <input type="text" name="name" id="new_username">
         <p id="username_error"></p>
-        <p>new password</p>
+        <p>New Password</p>
         <input type="password" name="new_password" id="new_password">
         <button type="button" id="toggle_new_password"><i class="fa-solid fa-eye"></i></button>
         <p id="new_password_error"></p>
-        <p>confirm new password</p>
+        <p>Confirm New Password</p>
         <input type="password" name="confirm_password" id="confirm_password">
         <button type="button" id="toggle_confirm_password"><i class="fa-solid fa-eye"></i></button>
         <p id="confirm_password_error"></p>
-        <button type="submit">sign up</button>
+        <button type="submit" id="sign_up_btn">Sign Up</button>
     </form>
     <script>
         $(document).ready(function() {
