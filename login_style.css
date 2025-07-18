@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#form_login {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    margin-top: 200px;
+    z-index: 1;
+    background: transparent;
+    border-radius: 40px;
+}
+#form_login * {
+    width: 300px;
+    height: 60px;
+    margin: auto;
+}
+#form_login p {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+#form_login input {
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+#form_login #password {
+    position: relative;
+}
+#form_login #toggle_password {
+    position: absolute;
+    display: inline-block;
+    background-color: transparent;
+    /* width: 20px; */
+    border: 0px;
+    margin: 22px auto;
+    right: -80px;
+}
+#form_login #toggle_password i {
+    width: 20px;
+    color: white;
+}
+#btn {
+    font-size: 20px;
+    color: black;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border: 0px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+}
+#login_btn {
+    width: 150px;
+    background-color:rgb(233, 160, 107, 0.4);
+    border: none;
+}
+#sign_up_btn {
+    width: 150px;
+    height: 60px;
+    background-color:rgb(233, 160, 107, 0.4);
+    border: none;
+}
+#sign_up_btn a {
+    color: black;
+    text-decoration: none;
+}
+.glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border: 0px solid rgba(255, 255, 255, 0.3);
+}
+
+

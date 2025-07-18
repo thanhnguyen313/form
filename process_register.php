@@ -48,7 +48,7 @@
 
     echo json_encode([
         'message' => 1,
-        'success' => 'success.php'
+        'success' => 'login.php'
     ]);
 
 ?>

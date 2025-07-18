@@ -90,6 +90,7 @@
                         success: function(result) {
                             if(result.message == 1) {
                                 alert("Succesful");
+                                window.location.href = result.success;
                             }
                             else {
                                 alert(result.error || "fail");
@@ -101,7 +102,7 @@
                     });
                 }
                 return false;
-            })
+            });
         });
     </script>
 </body>
